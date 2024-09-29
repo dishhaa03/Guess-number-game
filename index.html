@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <title>Guess the Numer Game</title>
+</head>
+<body class="bg-slate-800 text-white">
+    <!-- Title, always visible -->
+    <header class="flex flex-col sm:flex-row items-center justify-between w-full py-6 bg-blue-500 text-white shadow-md">
+        <div class="flex items-center">
+        </div>
+        <h1 class="text-4xl font-bold text-center sm:flex-grow ">Guess the Number Game</h1>
+    </header>    
+    
+    
+    
+
+    <div class="hidden flex flex-col items-center justify-center bg-slate-800 text-white">
+        <div id="sad-animation-container" class="text-center">
+            <lottie-player 
+                src="https://lottie.host/9ea83932-152c-46c8-8263-5b8c10f62906/GF32xzRxtO.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 300px; height: 300px" 
+                loop 
+                autoplay 
+                direction="1" 
+                mode="normal">
+            </lottie-player>
+            <p class="mt-4">You Lose the game.</p>
+            <p class="mt-4"> The number to be guessed was: <span id="random-number1"> </span></p>
+        </div>
+    </div>
+    <div class="hidden flex flex-col items-center justify-center bg-slate-800 text-white">
+        <div id="happy-animation-container" class="text-center">
+            <lottie-player 
+                src="https://lottie.host/4a09dcbd-3b98-4d01-a0d9-bfc7611dcb95/HOzDV3gwU5.json" 
+                background="transparent" 
+                speed="1" 
+                style="width: 500px; height: 300px" 
+                loop 
+                autoplay 
+                direction="1" 
+                mode="normal">
+            </lottie-player>
+            <p class="mt-4">You Won the game.</p>
+            <p class="mt-4"> The number to be guessed was: <span id="random-number2"></span></p>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- Start Game Button -->
+    <div id="start-container" class="flex flex-col items-center min-h-screen mt-16">
+        <button id="start-btn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+            Start New Game
+        </button>
+    </div>
+
+    <!-- Game Wrapper Container for vertical centering and spacing -->
+    <div class="hidden flex flex-col items-center min-h-screen mt-32">
+
+        <!-- Transparent background container for the game -->
+        <div class=" bg-white bg-opacity-10 rounded-lg p-8 text-center">
+            <!-- Game Container (Hidden by default) -->
+            <div id="game-container" class="flex flex-col items-center justify-center space-y-4">
+
+                <p class="text-lg">Enter a number between 1 and 100:</p>
+                <div class="flex items-center space-x-4">
+                    <input type="text" id="user-input" class="border rounded-lg py-2 px-4 text-center w-32 text-black">
+                                
+                    <button id="submit-btn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Go
+                    </button>
+                </div>   
+                <p class="text-base">Your previous Values: <span id="previous-values"></span></p>
+                <p class="text-base">Remaining Guesses: <span id="remaining-guess-count">10</span> </p>             
+                
+                <div class="flex items-center space-x-4">
+                    <button id="higher-btn" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:bg-red-800 opacity-50" disabled>
+                        Go Higher
+                    </button>
+                    <button id="lower-btn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:bg-green-800 opacity-50" disabled>
+                        Go Lower
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
