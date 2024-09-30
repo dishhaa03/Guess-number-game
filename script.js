@@ -18,6 +18,10 @@ const happyAnimation = document.getElementById('happy-animation-container');
 const gameContainer = document.getElementById('game-container');
 const StartNewGameButton = document.getElementById('start-container');
 
+const score = document.getElementById('score');
+const highestScore = document.getElementById('highest-score');
+let highestScoreValue = 0;
+
 // console.log(userInput.value);
 StartNewGameButton.addEventListener('click', function(){
     randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -33,7 +37,6 @@ StartNewGameButton.addEventListener('click', function(){
     disableGoLower();
 })
 submitButton.addEventListener('click', function(e) {
-    console.log(userInput.value);
     console.log(randomNumber);
     
     e.preventDefault();
@@ -45,13 +48,17 @@ submitButton.addEventListener('click', function(e) {
     userInput.value='';
     updatePreviousValues(userInputValue);
     countNoOfGuess++;
-    updateRemainingGuessCount(countNoOfGuess);
     if(userInputValue == randomNumber){
         RandomNumberInput2.innerHTML = `${randomNumber}`;
         happyAnimation.parentElement.classList.remove('hidden');
         StartNewGameButton.classList.remove('hidden');
         gameContainer.parentElement.parentElement.classList.add('hidden');
+        score.innerText = `${(10 - countNoOfGuess)*10}`;
+        highestScoreValue = Math.max(highestScoreValue, (10 - countNoOfGuess)*10);
+        highestScore.innerText = `${highestScoreValue}`;
+        return;
     }
+    updateRemainingGuessCount(countNoOfGuess);
     if(userInputValue < randomNumber){
         enableGoHigher();
         disableGoLower();
